@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from .models import Product
 
 # Create your views here.
 def  home(request):
@@ -9,3 +10,8 @@ def  home(request):
         context = {'username_is': "unknown"}
 
     return render(request, 'products/home.html', context)
+
+
+def all(request):
+    context = {"products": Product.objects.all()}
+    return render(request, 'products/all.html', context )
